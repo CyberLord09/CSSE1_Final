@@ -9,3 +9,32 @@ courses: { compsci: {week: 6} }
 ---
 
 
+<style>
+.text-center{
+    text-align:center;
+    margin-left:auto;
+    margin-right:auto;
+}
+</style>
+
+
+<body>
+<div id="text-center">
+    <canvas id="background">
+    </canvas>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+<body>
+
+<script>
+</script>
