@@ -22,6 +22,9 @@ courses: { compsci: {week: 6} }
 <div id="text-center">
     <canvas id="background">
     </canvas>
+
+
+
 </div>
 
 
@@ -33,4 +36,5 @@ courses: { compsci: {week: 6} }
 
 <body>
 
-<script src="script.js"></script>
+<script>
+</script>
