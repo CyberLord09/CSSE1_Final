@@ -20,7 +20,6 @@ courses: { compsci: {week: 6} }
     }
     body {
       background: url("{{site.baseurl}}/images/sprite/TANK LOADING BLANK (1).png") no-repeat center center fixed;
-      background-size: cover;
       color: #fff;
       font-family: 'Arial', sans-serif;
       text-align: center;
