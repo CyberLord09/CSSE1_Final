@@ -1,7 +1,7 @@
 ---
 toc: true
 comments: false
-layout: default
+layout: none
 type: hacks
 courses: { compsci: {week: 6} }
 ---
@@ -13,7 +13,7 @@ courses: { compsci: {week: 6} }
   <title>T.A.N.K.S</title>
   <style>
     body {
-      background: url("{{site.baseurl}}/images/sprite/TANK LOADING BLANK (1).png") no-repeat center center fixed;
+      background: url("{{site.baseurl}}/images/sprite/TANKLOADINGBLANK.png") no-repeat center center fixed;
       color: #fff;
       font-family: 'Arial', sans-serif;
       text-align: center;
@@ -89,6 +89,12 @@ courses: { compsci: {week: 6} }
       box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
       z-index: 3;
     }
+    #gameContainer {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      }
   </style>
 </head>
 <body>
@@ -464,7 +470,7 @@ courses: { compsci: {week: 6} }
       closeSettings();
       closeInstructions();
 
-      document.body.style.backgroundImage = 'url("{{site.baseurl}}/images/sprite/TANK LOADING SLIDE (1).gif")';
+      document.body.style.backgroundImage = 'url("{{site.baseurl}}/images/sprite/TANKLOADINGSLIDE.gif")';
       document.querySelectorAll('.button').forEach(function(button) {
       button.style.display = 'none';
       });
