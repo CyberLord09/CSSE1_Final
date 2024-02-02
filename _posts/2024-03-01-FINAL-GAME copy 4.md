@@ -17,8 +17,8 @@ courses: { compsci: {week: 6} }
     left: 50%;
     transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
-    width: 1472px; /* Adjust the width as needed */
-    height: 828px; /* Adjust the height as needed */
+    width: 1472px;
+    height: 828px; 
   }
   /* Make the image responsive */
   .container img {
