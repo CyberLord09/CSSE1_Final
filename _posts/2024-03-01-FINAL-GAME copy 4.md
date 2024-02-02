@@ -12,12 +12,13 @@ courses: { compsci: {week: 6} }
   <style>
 /* Container needed to position the button. Adjust the width as needed */
   .container {
-    position: relative;
-    top: 3%;
-    left: 3.5%;
-    width: 1472px;
-    height: 828px;
-    align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    width: 1472px; /* Adjust the width as needed */
+    height: 828px; /* Adjust the height as needed */
   }
   /* Make the image responsive */
   .container img {
