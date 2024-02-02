@@ -1,7 +1,7 @@
 ---
 toc: true
 comments: false
-layout: default 
+layout: default
 type: hacks
 courses: { compsci: {week: 6} }
 ---
@@ -12,19 +12,19 @@ courses: { compsci: {week: 6} }
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>T.A.N.K.S</title>
   <style>
-    body, html {
-      margin: 0;
-      padding: 0;
-      width: 100%;
-      height: 100%;
-    }
     body {
       background: url("{{site.baseurl}}/images/sprite/TANK LOADING BLANK (1).png") no-repeat center center fixed;
       color: #fff;
       font-family: 'Arial', sans-serif;
       text-align: center;
+      position: relative;
       overflow: hidden;
     }
+    body, html {
+      max-width: 1472px;
+      max-height: 828px
+    }
+
     .button {
       background-color: transparent;
       color: #fff;
@@ -40,17 +40,17 @@ courses: { compsci: {week: 6} }
     }
     #instructionsButton {
       top: 53vh;
-      left: 48vw;
+      left: 37vw;
       transform: translate(-50%, -50%);
     }
     #settingsButton {
       top: 57vh;
-      left: 4vw;
+      left: 13vw;
       transform: translate(-50%, -50%);
     }
     #playButton {
       top: 55vh;
-      left: 26vw;
+      left: 25vw;
       transform: translate(-50%, -50%);
     }
     .button:hover {
