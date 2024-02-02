@@ -6,7 +6,7 @@ type: hacks
 courses: { compsci: {week: 6} }
 ---
 
-<html lang="en">
+<html>
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -33,24 +33,24 @@ courses: { compsci: {week: 6} }
       font-family: 'Arial', sans-serif;
       border: none;
       outline: none;
-      position: absolute;
+      position: relative;
       transform: translateX(-50%);
       transition: box-shadow 0.3s ease-out, color 0.3s ease-out;
       z-index: 1;
     }
     #instructionsButton {
-      top: 805%;
-      left: 78%;
+      top: 53vh;
+      left: 48vw;
       transform: translate(-50%, -50%);
     }
     #settingsButton {
-      top: 805%;
-      left: 4%;
+      top: 57vh;
+      left: 4vw;
       transform: translate(-50%, -50%);
     }
     #playButton {
-      top: 805%;
-      left: 41%;
+      top: 55vh;
+      left: 26vw;
       transform: translate(-50%, -50%);
     }
     .button:hover {
