@@ -2,29 +2,28 @@
 toc: true
 comments: false
 layout: nothing
+type: hacks
 courses: { compsci: {week: 6} }
 ---
 
 <html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>T.A.N.K.S</title>
   <style>
 /* Container needed to position the button. Adjust the width as needed */
   .container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 1472px; /* Set container width to match image width */
-    height: 828px; /* Set container height to match image height */
+    position: relative;
+    top: 3%;
+    left: 3.5%;
+    width: 1472px;
+    height: 828px;
+    align: center;
   }
-
+  /* Make the image responsive */
   .container img {
     width: 100%;
     height: auto;
   }
-
   /* Style the button and place it in the middle of the container/image */
   .container .btn {
     position: absolute;
@@ -47,7 +46,7 @@ courses: { compsci: {week: 6} }
 </head>
 <body>
   <div class="container">
-    <img src="{{site.baseurl}}/images/sprite/TANKLOADINGBLANK.png" alt="tankloadingblank" style="width:100%">
+    <img src="{{site.baseurl}}/images/sprite/TANKLOADINGBLANK.png" alt="tankloadingblank">
     <button class="btn">Button</button>
   </div>
   
