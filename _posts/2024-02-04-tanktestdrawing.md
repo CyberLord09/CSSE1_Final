@@ -183,7 +183,6 @@ courses: { compsci: {week: 6} }
             player1.x -= Math.cos(player1.rotation * Math.PI/180);
             player1.y -= Math.sin(player1.rotation * Math.PI/180);
         }
-
         //p2
         if(aPressed)
         {
@@ -221,8 +220,8 @@ courses: { compsci: {week: 6} }
         this.score = 0;
     }
 
-    let player1 = new Player (50, 100, 0, 92, 92);
-    let player2 = new Player (400, 400, 0, 92, 92);
+    let player2 = new Player (50, 100, 0, 92, 92);
+    let player1 = new Player (1300, 650, 180, 92, 92);
 
     function drawImage()
     {
