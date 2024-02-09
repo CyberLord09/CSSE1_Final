@@ -9,9 +9,14 @@ courses: { compsci: {week: 6} }
 <html>
 <head>
   <title>T.A.N.K.S</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pixelify+Sans">
   <style>
 /* Container needed to position the button. Adjust the width as needed */
+  html {
+    font-family: "Pixelify Sans";
+  }
   .container {
+    font-family: "Pixelify Sans";
     position: absolute;
     top: 50%;
     left: 50%;
@@ -28,27 +33,76 @@ courses: { compsci: {week: 6} }
   /* Style the button and place it in the middle of the container/image */
   .container .btn {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    background-color: #555;
-    color: white;
-    font-size: 16px;
-    padding: 12px 24px;
+    top: 76%;
+    left: 28%;
+    transform: translate(-28%, -76%);
+    -ms-transform: translate(-28%, -76%);
+    background-color: transparent;
+    /* color: white; */
+    font-size: 70px;
+    padding: 54px 32.5px;
     border: none;
     cursor: pointer;
-    border-radius: 5px;
+    /* border-radius: 5px; */
   }
   .container .btn:hover {
-    background-color: black;
+    font-family: "Pixelify Sans";
+    /* background-color: black; */
   }
-  </style>
+  /* button2code */
+  .container .btn2 {
+    font-family: "Pixelify Sans";
+    position: absolute;
+    top: 75%;
+    left: 45.8%;
+    transform: translate(-45.8%, -75%);
+    -ms-transform: translate(-45.8%, -75%);
+    background-color: transparent;
+    color: white;
+    font-size: 70px;
+    padding: 54px 30px;
+    border: none;
+    cursor: pointer;
+    /* border-radius: 5px; */
+  }
+  .container .btn2:hover {
+    font-family: "Pixelify Sans";
+    /* background-color: white; */
+  }
+  /* button3code */
+  .container .btn3 {
+    font-family: "Pixelify Sans";
+    position: absolute;
+    top: 75.7%;
+    left: 52.3%;
+    transform: translate(52.3%, -75.7%);
+    -ms-transform: translate(52.3%, -75.7%);
+    background-color: transparent;
+    /* color: white; */
+    font-size: 60px;
+    padding: 54px 29px;
+    border: none;
+    cursor: pointer;
+    /* border-radius: 5px; */
+  }
+  .container .btn3:hover {
+    font-family: "Pixelify Sans";
+    /* background-color: green; */
+  }
+  /*
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> */
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pixelify+Sans">
+
+</style>
 </head>
 <body>
   <div class="container">
     <img src="{{site.baseurl}}/images/sprite/TANKLOADINGBLANK.png" alt="tankloadingblank">
-    <button class="btn">Button</button>
+    <button class="btn">⚙️</button>
+    <button class="btn2">🎮</button>
+    <button class="btn3">✏️</button>
   </div>
   
 
