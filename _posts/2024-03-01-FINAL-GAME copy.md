@@ -98,10 +98,12 @@ courses: { compsci: {week: 6} }
 </style>
 </head>
 <body>
-  <div class-="buttons">
-    <button id="settingsButton" class="button" onclick="openSettings()">Settings</button>
-    <button id="playButton" class="button" onclick="startGame()">Play</button>
-    <button id="instructionsButton" class="button" onclick="openInstructions()">Instructions</button>
+
+  <div class="container">
+    <img src="{{site.baseurl}}/images/sprite/TANKLOADINGBLANK.png" alt="tankloadingblank">
+    <button class="btn">⚙️</button>
+    <button class="btn2">🎮</button>
+    <button class="btn3">✏️</button>
   </div>
 
   <div id="settingsOverlay" class="overlay">
