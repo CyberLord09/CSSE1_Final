@@ -8,102 +8,100 @@ courses: { compsci: {week: 6} }
 
 <html>
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>T.A.N.K.S</title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pixelify+Sans">
   <style>
-/* Container needed to position the button. Adjust the width as needed */
-  html {
-    font-family: "Pixelify Sans";
-  }
-  .container {
-    font-family: "Pixelify Sans";
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    width: 1472px;
-    height: 828px; 
-  }
-  /* Make the image responsive */
-  .container img {
-    width: 100%;
-    height: auto;
-  }
-  /* Style the button and place it in the middle of the container/image */
-  .container .btn {
-    position: absolute;
-    top: 76%;
-    left: 28%;
-    transform: translate(-28%, -76%);
-    -ms-transform: translate(-28%, -76%);
-    background-color: transparent;
-    /* color: white; */
-    font-size: 70px;
-    padding: 54px 32.5px;
-    border: none;
-    cursor: pointer;
-    /* border-radius: 5px; */
-  }
-  .container .btn:hover {
-    font-family: "Pixelify Sans";
-    /* background-color: black; */
-  }
-  /* button2code */
-  .container .btn2 {
-    font-family: "Pixelify Sans";
-    position: absolute;
-    top: 75%;
-    left: 45.8%;
-    transform: translate(-45.8%, -75%);
-    -ms-transform: translate(-45.8%, -75%);
-    background-color: transparent;
-    color: white;
-    font-size: 70px;
-    padding: 54px 30px;
-    border: none;
-    cursor: pointer;
-    /* border-radius: 5px; */
-  }
-  .container .btn2:hover {
-    font-family: "Pixelify Sans";
-    /* background-color: white; */
-  }
-  /* button3code */
-  .container .btn3 {
-    font-family: "Pixelify Sans";
-    position: absolute;
-    top: 75.7%;
-    left: 52.3%;
-    transform: translate(52.3%, -75.7%);
-    -ms-transform: translate(52.3%, -75.7%);
-    background-color: transparent;
-    /* color: white; */
-    font-size: 60px;
-    padding: 54px 29px;
-    border: none;
-    cursor: pointer;
-    /* border-radius: 5px; */
-  }
-  .container .btn3:hover {
-    font-family: "Pixelify Sans";
-    /* background-color: green; */
-  }
-  /*
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> */
-  
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pixelify+Sans">
-
-</style>
+    body {
+      background: url("{{site.baseurl}}/images/sprite/TANKLOADINGBLANK.png") no-repeat center center fixed;
+      color: #fff;
+      font-family: 'Arial', sans-serif;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      align: center;
+    }
+    body, html {
+      max-width: 1472px;
+      max-height: 828px;
+    }
+    .button {
+      background-color: transparent;
+      color: #fff;
+      font-size: 16px;
+      cursor: pointer;
+      font-family: 'Arial', sans-serif;
+      border: none;
+      outline: none;
+      position: fixed;
+      transform: translateX(-50%);
+      transition: box-shadow 0.3s ease-out, color 0.3s ease-out;
+      z-index: 1;
+    }
+    #instructionsButton {
+      top: 53vh;
+      left: 37vw;
+    }
+    #settingsButton {
+      top: 57vh;
+      left: 13vw;
+      transform: translate(-50%, -50%);
+    }
+    #playButton {
+      top: 55vh;
+      left: 25vw;
+      transform: translate(-50%, -50%);
+    }
+    .button:hover {
+      box-shadow: 0 0 20px #ff4500, 0 0 40px #ff4500;
+      color: #ff4500;
+      animation: shake 0.5s ease-in-out infinite;
+    }
+    @keyframes shake {
+      0%, 100% {
+        transform: translate(-50%, -50%);
+      }
+      25%, 75% {
+        transform: translate(-55%, -50%);
+      }
+      50% {
+        transform: translate(-50%, -50%);
+      }
+    }
+    .overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 2;
+    }
+    .model {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+      z-index: 3;
+    }
+    #gameContainer {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      }
+  </style>
 </head>
 <body>
-
-  <div class="container">
-    <img src="{{site.baseurl}}/images/sprite/TANKLOADINGBLANK.png" alt="tankloadingblank">
-    <button class="btn">⚙️</button>
-    <button class="btn2">🎮</button>
-    <button class="btn3">✏️</button>
+  <div class-="buttons">
+    <button id="settingsButton" class="button" onclick="openSettings()">Settings</button>
+    <button id="playButton" class="button" onclick="startGame()">Play</button>
+    <button id="instructionsButton" class="button" onclick="openInstructions()">Instructions</button>
   </div>
 
   <div id="settingsOverlay" class="overlay">
