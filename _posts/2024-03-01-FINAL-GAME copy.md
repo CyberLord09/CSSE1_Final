@@ -38,16 +38,16 @@ courses: { compsci: {week: 6} }
       transition: box-shadow 0.3s ease-out, color 0.3s ease-out;
       z-index: 1;
     }
-    #instructionsButton {
+    .buttons #instructionsButton {
       top: 53vh;
       left: 37vw;
     }
-    #settingsButton {
+    .buttons #settingsButton {
       top: 57vh;
       left: 13vw;
       transform: translate(-50%, -50%);
     }
-    #playButton {
+    .buttons #playButton {
       top: 55vh;
       left: 25vw;
       transform: translate(-50%, -50%);
@@ -98,7 +98,7 @@ courses: { compsci: {week: 6} }
   </style>
 </head>
 <body>
-  <div class-="buttons">
+  <div class="buttons">
     <button id="settingsButton" class="button" onclick="openSettings()">Settings</button>
     <button id="playButton" class="button" onclick="startGame()">Play</button>
     <button id="instructionsButton" class="button" onclick="openInstructions()">Instructions</button>
@@ -306,16 +306,27 @@ courses: { compsci: {week: 6} }
         }
 
         //diag path
-        if(upPressed)
-        {
-            player1.x += Math.cos(player1.rotation * Math.PI/180);
-            player1.y += Math.sin(player1.rotation * Math.PI/180);
+        if (upPressed) {
+            let upx = player1.x + Math.cos(player1.rotation * Math.PI / 180);
+            let upy = player1.y + Math.sin(player1.rotation * Math.PI / 180);
+            
+            if (upx + player1.w / 1 <= 1472 && upx - player1.w / 10000 >= 0 && 
+                upy + player1.h / 1 <= 828 && upy - player1.h / 10000 >= 0) {
+                player1.x = upx;
+                player1.y = upy;
+            }
         }
 
         if(downPressed)
         {
-            player1.x -= Math.cos(player1.rotation * Math.PI/180);
-            player1.y -= Math.sin(player1.rotation * Math.PI/180);
+            let downx = player1.x - Math.cos(player1.rotation * Math.PI/180);
+            let downy = player1.y - Math.sin(player1.rotation * Math.PI/180);
+
+            if (downx + player1.w / 1 <= 1472 && downx - player1.w / 10000 >= 0 && 
+                downy + player1.h / 1 <= 828 && downy - player1.h / 10000 >= 0) {
+                player1.x = downx;
+                player1.y = downy;
+            }
         }
 
         //p2
@@ -332,14 +343,26 @@ courses: { compsci: {week: 6} }
         //diag path
         if(wPressed)
         {
-            player2.x += Math.cos(player2.rotation * Math.PI/180);
-            player2.y += Math.sin(player2.rotation * Math.PI/180);
+            let wx = player2.x + Math.cos(player2.rotation * Math.PI/180);
+            let wy = player2.y + Math.sin(player2.rotation * Math.PI/180);
+
+            if (wx + player2.w / 1.8 <= 1472 && wx - player2.w / 10000 >= 0 && 
+                wy + player2.h / 1.8 <= 828 && wy - player2.h / 10000 >= 0) {
+                player2.x = wx;
+                player2.y = wy;
+            }
         }
 
         if(sPressed)
         {
-            player2.x -= Math.cos(player2.rotation * Math.PI/180);
-            player2.y -= Math.sin(player2.rotation * Math.PI/180);
+            let sx = player2.x - Math.cos(player2.rotation * Math.PI/180);
+            let sy = player2.y - Math.sin(player2.rotation * Math.PI/180);
+
+            if (sx + player2.w / 1.8 <= 1472 && sx - player2.w / 10000 >= 0 && 
+                sy + player2.h / 1.8 <= 828 && sy - player2.h / 10000 >= 0) {
+                player2.x = sx;
+                player2.y = sy;
+            }
         }
     }
 
@@ -358,6 +381,8 @@ courses: { compsci: {week: 6} }
     let lastFireTime2 = 0;
     const fireCooldown2 = 500;
 
+    
+
     function player2Bullet() {
         if (qPressed && Date.now() - lastFireTime2 > fireCooldown2) 
         {
@@ -367,7 +392,7 @@ courses: { compsci: {week: 6} }
             let posx = player2.x+50;
             let posy = player2.y+48;
 
-            //velocity
+            //veloshitty
             let radang = player2.rotation * Math.PI / 180;
             let speed = 200;
             let velx = speed * Math.cos(radang);
@@ -388,6 +413,10 @@ courses: { compsci: {week: 6} }
 
                 if (posy + rad >= 828 || posy - rad <= 0) {
                     vely = -vely;
+                }
+
+                if (Date.now() - lastFireTime1 >= 10000) {
+                    return;
                 }
 
                 requestAnimationFrame(draw_and_update);
@@ -431,6 +460,10 @@ courses: { compsci: {week: 6} }
                     vely = -vely;
                 }
 
+                if (Date.now() - lastFireTime1 >= 10000) {
+                    return;
+                }
+
                 requestAnimationFrame(draw_and_update);
             }
             requestAnimationFrame(draw_and_update);
@@ -460,6 +493,7 @@ courses: { compsci: {week: 6} }
             drawimgrotation(tank2, player2.x, player2.y, player2.w, player2.h, player2.rotation);
         }
     }
+    setInterval(drawImage, 5);
 
     function startGame() {
       document.querySelectorAll('.button').forEach(function(button) {
