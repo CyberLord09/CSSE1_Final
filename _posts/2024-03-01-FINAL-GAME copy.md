@@ -14,59 +14,40 @@ courses: { compsci: {week: 6} }
   <style>
     body {
       background: url("{{site.baseurl}}/images/sprite/TANKLOADINGBLANK.png") no-repeat center center fixed;
-      color: #fff;
-      font-family: 'Arial', sans-serif;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-      align: center;
     }
-    body, html {
-      max-width: 1472px;
-      max-height: 828px;
+    .container {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+      width: 1472px;
+      height: 828px;
+      z-index: 1;
     }
-    .button {
+    .container button {
       background-color: transparent;
       color: #fff;
-      font-size: 16px;
+      font-size: 60px;
       cursor: pointer;
       font-family: 'Arial', sans-serif;
       border: none;
       outline: none;
       position: fixed;
-      transform: translateX(-50%);
       transition: box-shadow 0.3s ease-out, color 0.3s ease-out;
-      z-index: 1;
+      z-index: 2;
     }
-    .buttons #instructionsButton {
-      top: 53vh;
-      left: 37vw;
+    .container .btn1 {
+      top: 65%;
+      left: 27.4%;
     }
-    .buttons #settingsButton {
-      top: 57vh;
-      left: 13vw;
-      transform: translate(-50%, -50%);
+    .container .btn2 {
+      top: 64.3%;
+      left: 43.1%;
     }
-    .buttons #playButton {
-      top: 55vh;
-      left: 25vw;
-      transform: translate(-50%, -50%);
-    }
-    .button:hover {
-      box-shadow: 0 0 20px #ff4500, 0 0 40px #ff4500;
-      color: #ff4500;
-      animation: shake 0.5s ease-in-out infinite;
-    }
-    @keyframes shake {
-      0%, 100% {
-        transform: translate(-50%, -50%);
-      }
-      25%, 75% {
-        transform: translate(-55%, -50%);
-      }
-      50% {
-        transform: translate(-50%, -50%);
-      }
+    .container .btn3 {
+      top: 65%;
+      left: 58.7%;
     }
     .overlay {
       display: none;
@@ -76,7 +57,7 @@ courses: { compsci: {week: 6} }
       width: 100%;
       height: 100%;
       background: rgba(0, 0, 0, 0.5);
-      z-index: 2;
+      z-index: 5;
     }
     .model {
       position: fixed;
@@ -87,21 +68,21 @@ courses: { compsci: {week: 6} }
       padding: 20px;
       border-radius: 10px;
       box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-      z-index: 3;
+      z-index: 6;
     }
     #gameContainer {
       position: fixed;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      }
+    }
   </style>
 </head>
 <body>
-  <div class="buttons">
-    <button id="settingsButton" class="button" onclick="openSettings()">Settings</button>
-    <button id="playButton" class="button" onclick="startGame()">Play</button>
-    <button id="instructionsButton" class="button" onclick="openInstructions()">Instructions</button>
+  <div class="container">
+    <button class="btn1" onclick="openSettings()">⚙️</button>
+    <button class="btn2" onclick="startGame()">🎮</button>
+    <button class="btn3" onclick="openInstructions()">✏️</button>
   </div>
 
   <div id="settingsOverlay" class="overlay">
@@ -109,16 +90,15 @@ courses: { compsci: {week: 6} }
       <!-- add stuff -->
       <h2>Settings</h2>
       <!-- add stuff -->
-      <button onclick="closeSettings()">Close</button>
+      <button class="closeButton" onclick="closeSettings()">Close</button>
     </div>
   </div>
 
   <div id="instructionsOverlay" class="overlay">
     <div class="model">
-      <!-- add stuff -->
       <h2>Instructions</h2>
       <!-- add stuff -->
-      <button onclick="closeInstructions()">Close</button>
+      <button class="closeButton" onclick="closeInstructions()">Close</button>
     </div>
   </div>
 
@@ -127,6 +107,39 @@ courses: { compsci: {week: 6} }
   </div>
 
   <script>
+
+        function startGame() {
+        document.querySelectorAll('.container button').forEach(function(button) {
+          button.style.display = 'none';
+        });
+
+        document.body.style.backgroundImage = 'url("{{site.baseurl}}/images/sprite/TANKLOADINGSLIDE.gif")'; 
+        document.getElementById("gameContainer").style.display = 'block';
+
+        // Set a timeout to delay the fade-in effect
+        setTimeout(function() {
+          document.getElementById("gameContainer").style.opacity = 1;
+          // Start the game loop
+          setInterval(drawImage, 10);
+        }, 1000); // Adjust the delay time (in milliseconds) as needed
+      }
+
+    function openSettings() {
+      document.getElementById('settingsOverlay').style.display = 'block';
+    }
+
+    function closeSettings() {
+      document.getElementById('settingsOverlay').style.display = 'none';
+    }
+
+    function openInstructions() {
+      document.getElementById('instructionsOverlay').style.display = 'block';
+    }
+
+    function closeInstructions() {
+      document.getElementById('instructionsOverlay').style.display = 'none';
+    }
+
     window.addEventListener("keydown", function(e) { if(["Space","ArrowUp","ArrowDown","ArrowLeft","ArrowRight"].indexOf(e.code) > -1) { e.preventDefault(); } }, false);
 
     var canvas = document.getElementById("box").getContext("2d");
@@ -495,44 +508,6 @@ courses: { compsci: {week: 6} }
     }
     setInterval(drawImage, 5);
 
-    function startGame() {
-      document.querySelectorAll('.button').forEach(function(button) {
-        button.style.display = 'none';
-      });
-
-      // Close any open overlays
-      closeSettings();
-      closeInstructions();
-
-      document.body.style.backgroundImage = 'url("{{site.baseurl}}/images/sprite/TANKLOADINGSLIDE.gif")';
-      document.querySelectorAll('.button').forEach(function(button) {
-      button.style.display = 'none';
-      });
-
-      // Set a timeout to delay the fade-in effect
-      setTimeout(function() {
-        document.getElementById("gameContainer").style.opacity = 1;
-        // Start the game loop
-        setInterval(drawImage, 10);
-      }, 1000); // Adjust the delay time (in milliseconds) as needed
-    }
-
-
-    function openSettings() {
-      document.getElementById('settingsOverlay').style.display = 'block';
-    }
-
-    function closeSettings() {
-      document.getElementById('settingsOverlay').style.display = 'none';
-    }
-
-    function openInstructions() {
-      document.getElementById('instructionsOverlay').style.display = 'block';
-    }
-
-    function closeInstructions() {
-      document.getElementById('instructionsOverlay').style.display = 'none';
-    }
   </script>
 
 </body>
