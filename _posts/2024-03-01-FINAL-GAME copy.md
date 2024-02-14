@@ -76,6 +76,23 @@ courses: { compsci: {week: 6} }
       left: 50%;
       transform: translate(-50%, -50%);
     }
+    .instructionsContainer {
+      display: flex;
+      width: auto;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      gap: 200px;
+      padding: 10px;
+    }
+    .choice {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      padding: 10px;
+    }
   </style>
 </head>
 <body>
@@ -96,9 +113,23 @@ courses: { compsci: {week: 6} }
 
   <div id="instructionsOverlay" class="overlay">
     <div class="model">
-      <h2>Instructions</h2>
-      <!-- add stuff -->
-      <button class="closeButton" onclick="closeInstructions()">Close</button>
+      <h1 style="text-align: center; color: black;">Instructions</h1>
+      <p style="text-align: center; color: black;">This is a 2 player game, where each player controls one tank. Each tank can shoot a bullet with a cooldown, and the aim of the game is to kill the other tank before they kill yours.</p>
+      <div class="instructionsContainer">
+        <div class="choice">
+          <h2 style="color: black; text-align: center;">Player 1</h2>
+          <p style="color: black; text-align: center;">Press Q to Shoot. <br> Use WASD to move.</p>
+          <img src = "{{site.baseurl}}/images/sprite/tank0.png" id="p1tank">
+        </div>
+        <div class="choice">
+          <h2 style="color: black; text-align: center;">Player 2</h2>
+          <p style="color: black; text-align: center;">Press / to Shoot. <br> Use Arrow Keys to move.</p>
+          <img src = "{{site.baseurl}}/images/sprite/tank1.png" id="p2tank">
+        </div>
+      </div>
+        <div style="text-align: center;">
+            <button class="closeButton" onclick="closeInstructions()">Close</button>
+        </div>
     </div>
   </div>
 
@@ -108,7 +139,7 @@ courses: { compsci: {week: 6} }
 
   <script>
 
-        function startGame() {
+    function startGame() {
         document.querySelectorAll('.container button').forEach(function(button) {
           button.style.display = 'none';
         });
