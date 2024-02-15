@@ -1,4 +1,4 @@
-  var gameStarted = false;
+  let gameStarted = false;
   function openSettings() {
     document.getElementById('settingsOverlay').style.display = 'block';
   }
