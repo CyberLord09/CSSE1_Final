@@ -13,7 +13,7 @@ courses: { compsci: {week: 6} }
   <title>T.A.N.K.S</title>
   <style>
     html {
-      background-image: linear-gradient(to right, #4D62BC, #BC574D);
+      background-color: #97ae89
     }
     body {
       background: url("{{site.baseurl}}/images/sprite/TANKLOADINGBLANK.png") no-repeat center center fixed;

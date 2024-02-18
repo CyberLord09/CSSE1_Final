@@ -3,8 +3,12 @@ function startGame() {
       button.style.display = 'none';
     });
 
-    document.body.style.backgroundImage = 'url("/student/images/sprite/TANKLOADINGSLIDE.gif")'; 
+    document.body.style.backgroundImage = 'url("/student/images/sprite/TANKLOADINGSLIDE.gif")';
     document.getElementById("gameContainer").style.display = 'block';
+
+    setTimeout(function() {
+        document.documentElement.style.background = 'linear-gradient(to right, #4D62BC, #BC574D)';
+      }, 1150);
 
     // Set a timeout to delay the fade-in effect
     setTimeout(function() {
