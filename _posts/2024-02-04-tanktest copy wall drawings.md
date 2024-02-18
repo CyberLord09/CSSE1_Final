@@ -1032,11 +1032,7 @@ courses: { compsci: {week: 6} }
         drawLine27();
         drawLine28();
         drawLine29();
-        drawLine30();
-        drawLine31();
-        drawLine32();
-        drawLine33();
-        drawLine34();
+
         if(!player1.hit)
         {
             drawimgrotation(tank1, player1.x, player1.y, player1.w, player1.h, player1.rotation);
