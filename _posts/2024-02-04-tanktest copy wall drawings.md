@@ -2,7 +2,7 @@
 toc: true
 comments: false
 layout: tak
-title: tank test
+title: wall drawings
 description: A pretty advanced use of JS, HTML, CSS, and Spritesheets to create a single-player game. 
 type: hacks
 courses: { compsci: {week: 6} }
