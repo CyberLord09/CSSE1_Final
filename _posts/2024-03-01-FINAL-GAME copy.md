@@ -12,6 +12,9 @@ courses: { compsci: {week: 6} }
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>T.A.N.K.S</title>
   <style>
+    html {
+      background-image: linear-gradient(to right, #4D62BC, #BC574D);
+    }
     body {
       background: url("{{site.baseurl}}/images/sprite/TANKLOADINGBLANK.png") no-repeat center center fixed;
     }
