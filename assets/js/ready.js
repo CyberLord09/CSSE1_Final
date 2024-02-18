@@ -249,8 +249,8 @@ function controls()
         let wx = player2.x + Math.cos(player2.rotation * Math.PI/180);
         let wy = player2.y + Math.sin(player2.rotation * Math.PI/180);
 
-        if (wx + player2.w / 1.8 <= 1472 && wx - player2.w / 10000 >= 0 && 
-            wy + player2.h / 1.8 <= 828 && wy - player2.h / 10000 >= 0) {
+        if (wx + player2.w / 1 <= 1472 && wx - player2.w / 10000 >= 0 && 
+            wy + player2.h / 1 <= 828 && wy - player2.h / 10000 >= 0) {
             player2.x = wx;
             player2.y = wy;
         }
@@ -261,8 +261,8 @@ function controls()
         let sx = player2.x - Math.cos(player2.rotation * Math.PI/180);
         let sy = player2.y - Math.sin(player2.rotation * Math.PI/180);
 
-        if (sx + player2.w / 1.8 <= 1472 && sx - player2.w / 10000 >= 0 && 
-            sy + player2.h / 1.8 <= 828 && sy - player2.h / 10000 >= 0) {
+        if (sx + player2.w / 1 <= 1472 && sx - player2.w / 10000 >= 0 && 
+            sy + player2.h / 1 <= 828 && sy - player2.h / 10000 >= 0) {
             player2.x = sx;
             player2.y = sy;
         }
@@ -295,9 +295,9 @@ function player2Bullet() {
         let posx = player2.x+50;
         let posy = player2.y+48;
 
-        //veloshitty
+        //velocity
         let radang = player2.rotation * Math.PI / 180;
-        let speed = 200;
+        let speed = 150;
         let velx = speed * Math.cos(radang);
         let vely = speed * Math.sin(radang);
 
@@ -318,7 +318,7 @@ function player2Bullet() {
                 vely = -vely;
             }
 
-            if (Date.now() - lastFireTime1 >= 10000) {
+            if (Date.now() - lastFireTime2 >= 10000) {
                 return;
             }
 
@@ -342,7 +342,7 @@ function player1Bullet() {
 
         //velocity
         let radang = player1.rotation * Math.PI / 180;
-        let speed = 200;
+        let speed = 100;
         let velx = speed * Math.cos(radang);
         let vely = speed * Math.sin(radang);
 
@@ -373,8 +373,638 @@ function player1Bullet() {
     }
 }
 
-let player2 = new Player (50, 100, 0, 92, 92);
-let player1 = new Player (1300, 650, 180, 92, 92);
+let player2 = new Player (25, 25, 90, 92, 92);
+let player1 = new Player (1355, 715, 270, 92, 92);
+
+function drawLine1() {
+
+    let x1 = 147;
+    let y1 = 0;
+
+    let x2 = 147;
+    let y2 = 138;
+
+    canvas.beginPath();
+
+    canvas.moveTo(x1, y1);
+
+    canvas.lineTo(x2, y2);
+
+    canvas.strokeStyle = "black";
+
+    canvas.lineWidth = 10;
+
+    canvas.stroke();
+}
+
+function drawLine2() {
+
+    let x1 = 0;
+    let y1 = 276;
+
+    let x2 = 147;
+    let y2 = 276;
+
+    canvas.beginPath();
+
+    canvas.moveTo(x1, y1);
+
+    canvas.lineTo(x2, y2);
+
+    canvas.strokeStyle = "black";
+
+    canvas.lineWidth = 10;
+
+    canvas.stroke();
+}
+
+function drawLine4() {
+
+    let x1 = 294;
+    let y1 = 276;
+
+    let x2 = 441;
+    let y2 = 276;
+
+    canvas.beginPath();
+
+    canvas.moveTo(x1, y1);
+
+    canvas.lineTo(x2, y2);
+
+    canvas.strokeStyle = "black";
+
+    canvas.lineWidth = 10;
+
+    canvas.stroke();
+}
+
+function drawLine3() {
+
+    let x1 = 294;
+    let y1 = 138;
+
+    let x2 = 735;
+    let y2 = 138;
+
+    canvas.beginPath();
+
+    canvas.moveTo(x1, y1);
+
+    canvas.lineTo(x2, y2);
+
+    canvas.strokeStyle = "black";
+
+    canvas.lineWidth = 10;
+
+    canvas.stroke();
+}
+
+function drawLine5() {
+
+    let x1 = 0;
+    let y1 = 552;
+
+    let x2 = 147;
+    let y2 = 552;
+
+    canvas.beginPath();
+
+    canvas.moveTo(x1, y1);
+
+    canvas.lineTo(x2, y2);
+
+    canvas.strokeStyle = "black";
+
+    canvas.lineWidth = 10;
+
+    canvas.stroke();
+}
+
+function drawLine11() {
+
+    let x1 = 294;
+    let y1 = 552;
+
+    let x2 = 588;
+    let y2 = 552;
+
+    canvas.beginPath();
+
+    canvas.moveTo(x1, y1);
+
+    canvas.lineTo(x2, y2);
+
+    canvas.strokeStyle = "black";
+
+    canvas.lineWidth = 10;
+
+    canvas.stroke();
+}
+
+function drawLine6() {
+
+    let x1 = 142;
+    let y1 = 414;
+
+    let x2 = 142;
+    let y2 = 552;
+
+    canvas.beginPath();
+
+    canvas.moveTo(x1, y1);
+
+    canvas.lineTo(x2, y2);
+
+    canvas.strokeStyle = "black";
+
+    canvas.lineWidth = 10;
+
+    canvas.stroke();
+}
+
+function drawLine7() {
+
+    let x1 = 294;
+    let y1 = 414;
+
+    let x2 = 294;
+    let y2 = 690;
+
+    canvas.beginPath();
+
+    canvas.moveTo(x1, y1);
+
+    canvas.lineTo(x2, y2);
+
+    canvas.strokeStyle = "black";
+
+    canvas.lineWidth = 10;
+
+    canvas.stroke();
+}
+
+function drawLine8() {
+
+    let x1 = 147;
+    let y1 = 690;
+
+    let x2 = 441;
+    let y2 = 690;
+
+    canvas.beginPath();
+
+    canvas.moveTo(x1, y1);
+
+    canvas.lineTo(x2, y2);
+
+    canvas.strokeStyle = "black";
+
+    canvas.lineWidth = 10;
+
+    canvas.stroke();
+}
+
+function drawLine9() {
+
+    let x1 = 436;
+    let y1 = 276;
+
+    let x2 = 436;
+    let y2 = 414;
+
+    canvas.beginPath();
+
+    canvas.moveTo(x1, y1);
+
+    canvas.lineTo(x2, y2);
+
+    canvas.strokeStyle = "black";
+
+    canvas.lineWidth = 10;
+
+    canvas.stroke();
+}
+
+function drawLine10() {
+
+    let x1 = 436;
+    let y1 = 276;
+
+    let x2 = 436;
+    let y2 = 414;
+
+    canvas.beginPath();
+
+    canvas.moveTo(x1, y1);
+
+    canvas.lineTo(x2, y2);
+
+    canvas.strokeStyle = "black";
+
+    canvas.lineWidth = 10;
+
+    canvas.stroke();
+}
+
+function drawLine12() {
+
+    let x1 = 588;
+    let y1 = 272;
+
+    let x2 = 588;
+    let y2 = 557;
+
+    canvas.beginPath();
+
+    canvas.moveTo(x1, y1);
+
+    canvas.lineTo(x2, y2);
+
+    canvas.strokeStyle = "black";
+
+    canvas.lineWidth = 10;
+
+    canvas.stroke();
+}
+
+function drawLine13() {
+
+    let x1 = 735;
+    let y1 = 133;
+
+    let x2 = 735;
+    let y2 = 414;
+
+    canvas.beginPath();
+
+    canvas.moveTo(x1, y1);
+
+    canvas.lineTo(x2, y2);
+
+    canvas.strokeStyle = "black";
+
+    canvas.lineWidth = 10;
+
+    canvas.stroke();
+}
+
+function drawLine13() {
+
+    let x1 = 735;
+    let y1 = 133;
+
+    let x2 = 735;
+    let y2 = 276;
+
+    canvas.beginPath();
+
+    canvas.moveTo(x1, y1);
+
+    canvas.lineTo(x2, y2);
+
+    canvas.strokeStyle = "black";
+
+    canvas.lineWidth = 10;
+
+    canvas.stroke();
+}
+
+function drawLine14() {
+
+    let x1 = 730;
+    let y1 = 276;
+
+    let x2 = 882;
+    let y2 = 276;
+
+    canvas.beginPath();
+
+    canvas.moveTo(x1, y1);
+
+    canvas.lineTo(x2, y2);
+
+    canvas.strokeStyle = "black";
+
+    canvas.lineWidth = 10;
+
+    canvas.stroke();
+}
+
+function drawLine15() {
+
+    let x1 = 882;
+    let y1 = 0;
+
+    let x2 = 882;
+    let y2 = 138;
+
+    canvas.beginPath();
+
+    canvas.moveTo(x1, y1);
+
+    canvas.lineTo(x2, y2);
+
+    canvas.strokeStyle = "black";
+
+    canvas.lineWidth = 10;
+
+    canvas.stroke();
+}
+
+function drawLine16() {
+
+    let x1 = 1029;
+    let y1 = 138;
+
+    let x2 = 1472;
+    let y2 = 138;
+
+    canvas.beginPath();
+
+    canvas.moveTo(x1, y1);
+
+    canvas.lineTo(x2, y2);
+
+    canvas.strokeStyle = "black";
+
+    canvas.lineWidth = 10;
+
+    canvas.stroke();
+}
+
+function drawLine17() {
+
+    let x1 = 1176;
+    let y1 = 138;
+
+    let x2 = 1176;
+    let y2 = 276;
+
+    canvas.beginPath();
+
+    canvas.moveTo(x1, y1);
+
+    canvas.lineTo(x2, y2);
+
+    canvas.strokeStyle = "black";
+
+    canvas.lineWidth = 10;
+
+    canvas.stroke();
+}
+
+function drawLine18() {
+
+    let x1 = 1029;
+    let y1 = 276;
+
+    let x2 = 1029;
+    let y2 = 414;
+
+    canvas.beginPath();
+
+    canvas.moveTo(x1, y1);
+
+    canvas.lineTo(x2, y2);
+
+    canvas.strokeStyle = "black";
+
+    canvas.lineWidth = 10;
+
+    canvas.stroke();
+}
+
+function drawLine19() {
+
+    let x1 = 1024;
+    let y1 = 414;
+
+    let x2 = 1323;
+    let y2 = 414;
+
+    canvas.beginPath();
+
+    canvas.moveTo(x1, y1);
+
+    canvas.lineTo(x2, y2);
+
+    canvas.strokeStyle = "black";
+
+    canvas.lineWidth = 10;
+
+    canvas.stroke();
+}
+
+function drawLine20() {
+
+    let x1 = 1323;
+    let y1 = 276;
+
+    let x2 = 1323;
+    let y2 = 419;
+
+    canvas.beginPath();
+
+    canvas.moveTo(x1, y1);
+
+    canvas.lineTo(x2, y2);
+
+    canvas.strokeStyle = "black";
+
+    canvas.lineWidth = 10;
+
+    canvas.stroke();
+}
+
+function drawLine21() {
+
+    let x1 = 735;
+    let y1 = 414;
+
+    let x2 = 882;
+    let y2 = 414;
+
+    canvas.beginPath();
+
+    canvas.moveTo(x1, y1);
+
+    canvas.lineTo(x2, y2);
+
+    canvas.strokeStyle = "black";
+
+    canvas.lineWidth = 10;
+
+    canvas.stroke();
+}
+
+function drawLine22() {
+
+    let x1 = 882;
+    let y1 = 409;
+
+    let x2 = 882;
+    let y2 = 552;
+
+    canvas.beginPath();
+
+    canvas.moveTo(x1, y1);
+
+    canvas.lineTo(x2, y2);
+
+    canvas.strokeStyle = "black";
+
+    canvas.lineWidth = 10;
+
+    canvas.stroke();
+}
+
+function drawLine23() {
+
+    let x1 = 877;
+    let y1 = 552;
+
+    let x2 = 1323;
+    let y2 = 552;
+
+    canvas.beginPath();
+
+    canvas.moveTo(x1, y1);
+
+    canvas.lineTo(x2, y2);
+
+    canvas.strokeStyle = "black";
+
+    canvas.lineWidth = 10;
+
+    canvas.stroke();
+}
+
+function drawLine24() {
+
+    let x1 = 1176;
+    let y1 = 690;
+
+    let x2 = 1176;
+    let y2 = 828;
+
+    canvas.beginPath();
+
+    canvas.moveTo(x1, y1);
+
+    canvas.lineTo(x2, y2);
+
+    canvas.strokeStyle = "black";
+
+    canvas.lineWidth = 10;
+
+    canvas.stroke();
+}
+
+function drawLine25() {
+
+    let x1 = 1171;
+    let y1 = 690;
+
+    let x2 = 1323;
+    let y2 = 690;
+
+    canvas.beginPath();
+
+    canvas.moveTo(x1, y1);
+
+    canvas.lineTo(x2, y2);
+
+    canvas.strokeStyle = "black";
+
+    canvas.lineWidth = 10;
+
+    canvas.stroke();
+}
+
+function drawLine26() {
+
+    let x1 = 735;
+    let y1 = 552;
+
+    let x2 = 735;
+    let y2 = 690;
+
+    canvas.beginPath();
+
+    canvas.moveTo(x1, y1);
+
+    canvas.lineTo(x2, y2);
+
+    canvas.strokeStyle = "black";
+
+    canvas.lineWidth = 10;
+
+    canvas.stroke();
+}
+
+function drawLine27() {
+
+    let x1 = 730;
+    let y1 = 690;
+
+    let x2 = 882;
+    let y2 = 690;
+
+    canvas.beginPath();
+
+    canvas.moveTo(x1, y1);
+
+    canvas.lineTo(x2, y2);
+
+    canvas.strokeStyle = "black";
+
+    canvas.lineWidth = 10;
+
+    canvas.stroke();
+}
+
+function drawLine28() {
+
+    let x1 = 1029;
+    let y1 = 690;
+
+    let x2 = 1029;
+    let y2 = 828;
+
+    canvas.beginPath();
+
+    canvas.moveTo(x1, y1);
+
+    canvas.lineTo(x2, y2);
+
+    canvas.strokeStyle = "black";
+
+    canvas.lineWidth = 10;
+
+    canvas.stroke();
+}
+
+function drawLine29() {
+
+    let x1 = 588;
+    let y1 = 690;
+
+    let x2 = 588;
+    let y2 = 828;
+
+    canvas.beginPath();
+
+    canvas.moveTo(x1, y1);
+
+    canvas.lineTo(x2, y2);
+
+    canvas.strokeStyle = "black";
+
+    canvas.lineWidth = 10;
+
+    canvas.stroke();
+}
 
 function drawImage()
 {
@@ -385,6 +1015,36 @@ function drawImage()
     player1Bullet();
 
     player2Bullet();
+
+    drawLine1();
+    drawLine2();
+    drawLine3();
+    drawLine4();
+    drawLine5();
+    drawLine6();
+    drawLine7();
+    drawLine8();
+    drawLine9();
+    drawLine10();
+    drawLine11();
+    drawLine12();
+    drawLine13();
+    drawLine14();
+    drawLine15();
+    drawLine16();
+    drawLine17();
+    drawLine18();
+    drawLine19();
+    drawLine20();
+    drawLine21();
+    drawLine22();
+    drawLine23();
+    drawLine24();
+    drawLine25();
+    drawLine26();
+    drawLine27();
+    drawLine28();
+    drawLine29();
 
     if(!player1.hit)
     {

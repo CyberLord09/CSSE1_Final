@@ -134,7 +134,7 @@ courses: { compsci: {week: 6} }
   </div>
 
   <div id="gameContainer" style="opacity: 0; transition: opacity 1s ease;">
-    <canvas width="1472" height="828" style="border: 4px solid black; float:left; margin:5px; background: #6C6C6C;" id="box"></canvas>
+    <canvas width="1472" height="828" style="border: 10px solid black; float:left; margin:5px; background: #6C6C6C;" id="box"></canvas>
   </div>
 
 <script src="{{site.baseurl}}/assets/js/ready.js"></script>
