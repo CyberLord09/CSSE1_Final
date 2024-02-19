@@ -1010,8 +1010,48 @@ function drawLine29() {
     canvas.stroke();
 }
 
-function drawImage()
-{
+// Check collision with each wall for player 1
+function checkCollisionPlayer1() {
+    // Left wall
+    if (player1.x < 0) {
+        player1.x = 0;
+    }
+    // Top wall
+    if (player1.y < 0) {
+        player1.y = 0;
+    }
+    // Right wall
+    if (player1.x + player1.w > canvas.width) {
+        player1.x = canvas.width - player1.w;
+    }
+    // Bottom wall
+    if (player1.y + player1.h > canvas.height) {
+        player1.y = canvas.height - player1.h;
+    }
+}
+
+// Check collision with each wall for player 2
+function checkCollisionPlayer2() {
+    // Left wall
+    if (player2.x < 0) {
+        player2.x = 0;
+    }
+    // Top wall
+    if (player2.y < 0) {
+        player2.y = 0;
+    }
+    // Right wall
+    if (player2.x + player2.w > canvas.width) {
+        player2.x = canvas.width - player2.w;
+    }
+    // Bottom wall
+    if (player2.y + player2.h > canvas.height) {
+        player2.y = canvas.height - player2.h;
+    }
+}
+
+// Call collision detection functions inside the drawImage function
+function drawImage() {
     canvas.clearRect(0, 0, 1472, 828);
 
     controls();
@@ -1019,6 +1059,9 @@ function drawImage()
     player1Bullet();
 
     player2Bullet();
+
+    checkCollisionPlayer1(); // Check collision for player 1
+    checkCollisionPlayer2(); // Check collision for player 2
 
     drawLine1();
     drawLine2();
@@ -1050,14 +1093,13 @@ function drawImage()
     drawLine28();
     drawLine29();
 
-    if(!player1.hit)
-    {
+    if (!player1.hit) {
         drawimgrotation(tank1, player1.x, player1.y, player1.w, player1.h, player1.rotation);
     }
 
-    if(!player2.hit)
-    {
+    if (!player2.hit) {
         drawimgrotation(tank2, player2.x, player2.y, player2.w, player2.h, player2.rotation);
     }
 }
+
 setInterval(drawImage, 5);
