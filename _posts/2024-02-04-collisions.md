@@ -271,17 +271,17 @@ courses: { compsci: {week: 6} }
             { x: 735, y: 133, width: 10, height: 281 }, // drawLine13
             { x: 882, y: 0, width: 10, height: 138 }, // drawLine15
             { x: 1029, y: 138, width: 10, height: 138 }, // drawLine16
-            { x: 1176, y: 138, width: 10, height: 138 }, // drawLine17
-            { x: 1029, y: 276, width: 10, height: 138 }, // drawLine18
-            { x: 1024, y: 414, width: 10, height: 414 }, // drawLine19
+            { x: 1176, y: 138, width: 10, height: 138 }, // drawLine17 
+            { x: 1029, y: 276, width: 10, height: 138 }, // drawLine18 
+            { x: 1024, y: 414, width: 299, height: 10 }, // drawLine19 
             { x: 1323, y: 276, width: 10, height: 143 }, // drawLine20
             { x: 735, y: 414, width: 147, height: 10 }, // drawLine21
             { x: 882, y: 409, width: 10, height: 143 }, // drawLine22
             { x: 1171, y: 690, width: 152, height: 10 }, // drawLine25
-            { x: 730, y: 552, width: 147, height: 10 }, // drawLine26
+            { x: 735, y: 552, width: 10, height: 138 }, // drawLine26
             { x: 730, y: 690, width: 152, height: 10 }, // drawLine27
-            { x: 1029, y: 690, width: 147, height: 10 }, // drawLine28
-            { x: 588, y: 690, width: 10, height: 138 }, // drawLine29,
+            { x: 1029, y: 690, width: 10, height: 138 }, // drawLine28
+            { x: 588, y: 690, width: 10, height: 138 }, // drawLine29 
         ];
 
         // Check collision with each maze rectangle
