@@ -468,27 +468,6 @@ courses: { compsci: {week: 6} }
         canvas.stroke();
     }
 
-    function drawLine11() {
-
-        let x1 = 294;
-        let y1 = 552;
-
-        let x2 = 588;
-        let y2 = 552;
-
-        canvas.beginPath();
-
-        canvas.moveTo(x1, y1);
-
-        canvas.lineTo(x2, y2);
-
-        canvas.strokeStyle = "black";
-
-        canvas.lineWidth = 10;
-
-        canvas.stroke();
-    }
-
     function drawLine6() {
 
         let x1 = 142;
@@ -572,14 +551,14 @@ courses: { compsci: {week: 6} }
 
         canvas.stroke();
     }
+    
+        function drawLine11() {
 
-    function drawLine10() {
+        let x1 = 294;
+        let y1 = 552;
 
-        let x1 = 436;
-        let y1 = 276;
-
-        let x2 = 436;
-        let y2 = 414;
+        let x2 = 588;
+        let y2 = 552;
 
         canvas.beginPath();
 
@@ -593,6 +572,7 @@ courses: { compsci: {week: 6} }
 
         canvas.stroke();
     }
+
 
     function drawLine12() {
 
@@ -601,27 +581,6 @@ courses: { compsci: {week: 6} }
 
         let x2 = 588;
         let y2 = 557;
-
-        canvas.beginPath();
-
-        canvas.moveTo(x1, y1);
-
-        canvas.lineTo(x2, y2);
-
-        canvas.strokeStyle = "black";
-
-        canvas.lineWidth = 10;
-
-        canvas.stroke();
-    }
-
-    function drawLine13() {
-
-        let x1 = 735;
-        let y1 = 133;
-
-        let x2 = 735;
-        let y2 = 414;
 
         canvas.beginPath();
 
@@ -1012,7 +971,6 @@ courses: { compsci: {week: 6} }
         drawLine7();
         drawLine8();
         drawLine9();
-        drawLine10();
         drawLine11();
         drawLine12();
         drawLine13();
