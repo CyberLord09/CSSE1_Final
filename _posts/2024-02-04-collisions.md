@@ -272,7 +272,7 @@ courses: { compsci: {week: 6} }
             { x: 735, y: 133, width: 0, height: 281 }, // drawLine13
             { x: 730, y: 276, width: 152, height: 0 }, // drawLine14
             { x: 882, y: 0, width: 0, height: 138 }, // drawLine15
-            { x: 1029, y: 138, width: 0, height: 138 }, // drawLine16
+            { x: 1029, y: 276, width: 0, height: 138 }, // drawLine16
             { x: 1176, y: 138, width: 0, height: 138 }, // drawLine17 
             { x: 1029, y: 276, width: 0, height: 138 }, // drawLine18 
             { x: 1024, y: 414, width: 299, height: 0 }, // drawLine19 
