@@ -17,6 +17,26 @@ courses: { compsci: {week: 6} }
 <canvas width="1472" height="828" style="border: 10px solid black; float:left; margin:5px; background: #6C6C6C;" id="box"></canvas>
 
 <script>
+    function checkBulletTankCollision(tank, bullet) {
+        // Calculate the coordinates of the center of the tank
+        let tankCenterX = tank.x + tank.w / 2;
+        let tankCenterY = tank.y + tank.h / 2;
+
+        // Calculate the distance between the center of the tank and the bullet
+        let distanceX = Math.abs(bullet.posx - tankCenterX);
+        let distanceY = Math.abs(bullet.posy - tankCenterY);
+
+        // Check if the distance is within the tank's radius
+        if (distanceX <= (tank.w / 2) && distanceY <= (tank.h / 2)) {
+            // Collision detected
+            return true;
+        }
+
+        // No collision
+        return false;
+    }
+
+    
     window.addEventListener("keydown", function(e) { if(["Space","ArrowUp","ArrowDown","ArrowLeft","ArrowRight"].indexOf(e.code) > -1) { e.preventDefault(); } }, false);
 
     var canvas = document.getElementById("box").getContext("2d");
