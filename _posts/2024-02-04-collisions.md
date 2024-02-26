@@ -429,7 +429,7 @@ courses: { compsci: {week: 6} }
         }
     }
 
-    let player2 = new Player (25, 25, 90, 92, 92);
+    let player2 = new Player (25, 25, 90, 65, 41);
     let player1 = new Player (1355, 715, 270, 92, 92);
 
     function drawLine1() {
