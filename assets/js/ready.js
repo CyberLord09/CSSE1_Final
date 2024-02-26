@@ -34,6 +34,24 @@ function closeInstructions() {
   document.getElementById('instructionsOverlay').style.display = 'none';
 }
 
+
+var slider = document.getElementById("myRange");
+
+slider.addEventListener('input', function() {
+  var value = slider.value;
+  if (value == 1) {
+    console.log("1")
+  }
+
+  else if (value == 2) {
+    console.log("2")
+  }
+
+  else if (value == 3) {
+    console.log("3")
+  }
+})
+
 window.addEventListener("keydown", function(e) { if(["Space","ArrowUp","ArrowDown","ArrowLeft","ArrowRight"].indexOf(e.code) > -1) { e.preventDefault(); } }, false);
 
 var canvas = document.getElementById("box").getContext("2d");

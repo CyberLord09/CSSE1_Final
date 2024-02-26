@@ -96,6 +96,45 @@ courses: { compsci: {week: 6} }
       gap: 10px;
       padding: 10px;
     }
+    .settingsContainer {
+      display: flex;
+      width: auto;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      gap: 50px;
+      padding: 10px;
+    }
+    .slider {
+      -webkit-appearance: none;
+      width: 100%;
+      height: 15px;
+      border-radius: 5px;
+      background: #d3d3d3;
+      outline: none;
+      opacity: 0.7;
+      -webkit-transition: .2s;
+      transition: opacity .2s;
+    }
+    .slider:hover {
+      opacity: 1;
+    }
+    .slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 25px;
+      height: 25px;
+      border-radius: 50%;
+      background: #04AA6D;
+      cursor: pointer;
+    }
+    .slider::-moz-range-thumb {
+      width: 25px;
+      height: 25px;
+      border-radius: 50%;
+      background: #04AA6D;
+      cursor: pointer;
+    }
   </style>
 </head>
 <body>
@@ -107,10 +146,22 @@ courses: { compsci: {week: 6} }
 
   <div id="settingsOverlay" class="overlay">
     <div class="model">
-      <!-- add stuff -->
-      <h2>Settings</h2>
-      <!-- add stuff -->
-      <button class="closeButton" onclick="closeSettings()">Close</button>
+      <h2 style="text-align: center;">Settings</h2>
+      <div class="settingsContainer">
+        <div class="choice">
+          <h2>Drawing Game</h2>
+        </div>
+        <div class="choice">
+          <input type="range" min="1" max="3" value="2" class="slider" id="myRange">
+        </div>
+        <div class="choice">
+          <h2>Actual Game</h2>
+        </div>
+      </div>
+      <br>
+      <div style="text-align: center;">
+        <button class="closeButton" onclick="closeSettings()">Close</button>
+      </div>
     </div>
   </div>
 
