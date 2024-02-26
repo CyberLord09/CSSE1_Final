@@ -14,7 +14,7 @@ courses: { compsci: {week: 6} }
     }
 </style>
 
-<canvas width="1472" height="828" style="border: 10px solid black; float:left; margin:5px; background: #6C6C6C;" id="box"></canvas>
+<canvas width="1472" height="828" style="border: 4px solid black; float:left; margin:5px; background: #6C6C6C;" id="box"></canvas>
 
 <script>
     window.addEventListener("keydown", function(e) { if(["Space","ArrowUp","ArrowDown","ArrowLeft","ArrowRight"].indexOf(e.code) > -1) { e.preventDefault(); } }, false);
@@ -375,11 +375,11 @@ courses: { compsci: {week: 6} }
 
     function drawLine() {
 
-        let x1 = 200;
-        let y1 = 200;
+        let x1 = 400;
+        let y1 = 0;
 
-        let x2 = 800;
-        let y2 = 800;
+        let x2 = 400;
+        let y2 = 300;
 
         canvas.beginPath();
 
@@ -389,7 +389,7 @@ courses: { compsci: {week: 6} }
 
         canvas.strokeStyle = "black";
 
-        canvas.lineWidth = 3;
+        canvas.lineWidth = 4;
 
         canvas.stroke();
     }
@@ -403,6 +403,8 @@ courses: { compsci: {week: 6} }
         player1Bullet();
 
         player2Bullet();
+
+        drawLine();
 
         if(!player1.hit)
         {
