@@ -2,7 +2,7 @@
 toc: true
 comments: false
 layout: tak
-title: tank test
+title: tank test hsau
 description: A pretty advanced use of JS, HTML, CSS, and Spritesheets to create a single-player game. 
 type: hacks
 courses: { compsci: {week: 6} }
@@ -303,12 +303,12 @@ courses: { compsci: {week: 6} }
                     velx = -velx;
                 }
 
-                console.log(posx);
-                console.log(posy);
-
-                if (posx + rad == 400) {
+                if (posx >= 400 && posx <= 402 && posy <=300) {
+                    console.log(velx);
                     velx = -velx;
-                } 
+                }
+
+
 
                 if (posy + rad >= 828 || posy - rad <= 0) {
                     vely = -vely;
@@ -325,7 +325,7 @@ courses: { compsci: {week: 6} }
     }
 
     let lastFireTime1 = 0;
-    const fireCooldown1 = 500;
+    const fireCooldown1 = 2000;
 
     function player1Bullet() {
         if (slasPressed && Date.now() - lastFireTime1 > fireCooldown1) 
@@ -355,12 +355,11 @@ courses: { compsci: {week: 6} }
                     velx = -velx;
                 }
 
-
                 if (posy + rad >= 828 || posy - rad <= 0) {
                     vely = -vely;
                 }
 
-                if (Date.now() - lastFireTime1 >= 10000) {
+                if (Date.now() - lastFireTime1 >= 2000) {
                     return;
                 }
 
@@ -370,7 +369,7 @@ courses: { compsci: {week: 6} }
         }
     }
 
-    let player2 = new Player (50, 100, 0, 92, 92);
+    let player2 = new Player (50, 100, 0, 65, 41);
     let player1 = new Player (1300, 650, 180, 92, 92);
 
     function drawLine() {
