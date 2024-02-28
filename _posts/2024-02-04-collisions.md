@@ -407,7 +407,11 @@ courses: { compsci: {week: 6} }
                     }
                 }
 
-                
+                if (checkMazeCollision(posx - rad, posy - rad, 2 * rad, 2 * rad)) {
+                    // Reverse bullet direction upon collision
+                    velx = -velx;
+                    vely = -vely;
+                }
 
                 if (posx-23 == player2.x) {
                     if (posy-23 == player2.y){
