@@ -595,8 +595,8 @@ function player1Bullet() {
     }
 }
 
-let player2 = new Player (25, 25, 90, 46, 46);
-let player1 = new Player (1355, 715, 270, 46, 46);
+let player2 = new Player (50, 50, 90, 46, 46);
+let player1 = new Player (1375, 732, 270, 46, 46);
 
 function drawLine1() {
 
