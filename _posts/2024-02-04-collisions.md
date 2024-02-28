@@ -464,6 +464,30 @@ courses: { compsci: {week: 6} }
                 if (gameEnded) {
                     return;
                 }
+
+                if (posy-23 > player1.y){
+                    if (posx-23 < player1.x){
+                        console.log('bullet coming from bottom left')
+                    }
+                    if (posx-23 > player1.x){
+                        console.log('bullet coming from bottom right')
+                    }
+                    if (posx-23 == player1.x){
+                        console.log('bullet coming from center bottom')
+                    }
+                }
+
+                if (posy-23 < player1.y){
+                    if (posx-23 < player1.x){
+                        console.log('bullet coming from top left')
+                    }
+                    if (posx-23 > player1.x){
+                        console.log('bullet coming from top right')
+                    }
+                    if (posx-23 == player1.x){
+                        console.log('bullet coming from center top')
+                    }
+                }
                 if (posx-23 == player1.x) {
                     if (posy-23 == player1.y) {
                         console.log('player 1 has been hit')
