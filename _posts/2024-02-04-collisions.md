@@ -63,6 +63,8 @@ courses: { compsci: {week: 6} }
     let qPressed = false;
     let started = false;
 
+    let gameEnded = false;
+
     //controls for player one and two
     function keyDownHandler(e)
     {
@@ -348,8 +350,8 @@ courses: { compsci: {week: 6} }
             lastFireTime2 = Date.now();
 
             let rad = 5;
-            let posx = player2.x+50;
-            let posy = player2.y+48;
+            let posx = player2.x+23;
+            let posy = player2.y+23;
 
             //velocity
             let radang = player2.rotation * Math.PI / 180;
@@ -377,11 +379,48 @@ courses: { compsci: {week: 6} }
                 if (Date.now() - lastFireTime2 >= 10000) {
                     return;
                 }
+                if (gameEnded) {
+                    return;
+                }
 
+                if (posy-23 > player2.y){
+                    if (posx-23 < player2.x){
+                        console.log('bullet coming from bottom left')
+                    }
+                    if (posx-23 > player2.x){
+                        console.log('bullet coming from bottom right')
+                    }
+                    if (posx-23 == player2.x){
+                        console.log('bullet coming from center bottom')
+                    }
+                }
+
+                if (posy-23 < player2.y){
+                    if (posx-23 < player2.x){
+                        console.log('bullet coming from top left')
+                    }
+                    if (posx-23 > player2.x){
+                        console.log('bullet coming from top right')
+                    }
+                    if (posx-23 == player2.x){
+                        console.log('bullet coming from center top')
+                    }
+                }
+
+                
+
+                if (posx-23 == player2.x) {
+                    if (posy-23 == player2.y){
+                        console.log('player 2 has been hit')
+                        endGame(); 
+                    }
+                }
+                
                 requestAnimationFrame(draw_and_update);
             }
             requestAnimationFrame(draw_and_update);
         }
+
     }
 
     let lastFireTime1 = 0;
@@ -393,8 +432,8 @@ courses: { compsci: {week: 6} }
             lastFireTime1 = Date.now();
 
             let rad = 5;
-            let posx = player1.x+50;
-            let posy = player1.y+48;
+            let posx = player1.x+23;
+            let posy = player1.y+23;
 
             //velocity
             let radang = player1.rotation * Math.PI / 180;
@@ -422,15 +461,23 @@ courses: { compsci: {week: 6} }
                 if (Date.now() - lastFireTime1 >= 10000) {
                     return;
                 }
-
+                if (gameEnded) {
+                    return;
+                }
+                if (posx-23 == player1.x) {
+                    if (posy-23 == player1.y) {
+                        console.log('player 1 has been hit')
+                        endGame(); 
+                    }
+                }
                 requestAnimationFrame(draw_and_update);
             }
             requestAnimationFrame(draw_and_update);
         }
     }
 
-    let player2 = new Player (25, 25, 90, 65, 41);
-    let player1 = new Player (1355, 715, 270, 92, 92);
+    let player2 = new Player (25, 25, 90, 46, 46);
+    let player1 = new Player (1355, 715, 270, 46, 46);
 
     function drawLine1() {
 
@@ -1113,4 +1160,13 @@ courses: { compsci: {week: 6} }
         }
     }
     setInterval(drawImage, 5);
+
+    function endGame() {
+        player2 = new Player (25, 25, 90, 46, 46);
+        player1 = new Player (1355, 715, 270, 46, 46);
+
+
+        gameEnded = true;
+    }
+
 </script>
