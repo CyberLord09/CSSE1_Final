@@ -220,8 +220,8 @@ courses: { compsci: {week: 6} }
         this.score = 0;
     }
 
-    let player2 = new Player (50, 100, 0, 92, 92);
-    let player1 = new Player (1300, 650, 180, 92, 92);
+    let player2 = new Player (50, 100, 0, 46, 46);
+    let player1 = new Player (1300, 650, 180, 46, 46);
 
     function drawImage()
     {
