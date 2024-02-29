@@ -305,8 +305,87 @@ courses: { compsci: {week: 6} }
         return false; // Not colliding with maze wall
     }
 
+function checkbulletWallCollisionx(x, y, w, h) {
+        let rectangles = [
+            // Maze walls
+            { x: 147, y: 0, width: 0, height: 138 }, // drawLine1
+            { x: 0, y: 276, width: 147, height: 0 }, // drawLine2
+            { x: 294, y: 138, width: 441, height: 0 }, // drawLine3
+            { x: 294, y: 276, width: 147, height: 0 }, // drawLine4
+            { x: 0, y: 552, width: 147, height: 0 }, // drawLine5
+            { x: 294, y: 414, width: 0, height: 294 }, // drawLine6
+            { x: 147, y: 414, width: 0, height: 138 }, // drawLine7
+            { x: 147, y: 690, width: 294, height: 0 }, // drawLine8
+            { x: 436, y: 276, width: 0, height: 138 }, // drawLine9
+            { x: 294, y: 552, width: 294, height: 0 }, // drawLine11           
+            { x: 588, y: 272, width: 0, height: 285 }, // drawLine12
+            { x: 735, y: 133, width: 0, height: 138 }, // drawLine13
+            { x: 730, y: 276, width: 152, height: 0 }, // drawLine14
+            { x: 882, y: 0, width: 0, height: 138 }, // drawLine15
+            { x: 1029, y: 138, width: 443, height: 0 }, // drawLine16
+            { x: 1176, y: 138, width: 0, height: 138 }, // drawLine17 
+            { x: 1029, y: 276, width: 0, height: 138 }, // drawLine18 
+            { x: 1024, y: 414, width: 299, height: 0 }, // drawLine19 
+            { x: 1323, y: 276, width: 0, height: 143 }, // drawLine20
+            { x: 735, y: 414, width: 147, height: 0 }, // drawLine21
+            { x: 882, y: 409, width: 0, height: 143 }, // drawLine22
+            { x: 877, y: 552, width: 436, height: 0}, // drawLine23
+            { x: 1176, y: 690, width: 0, height: 138}, // drawLine24
+            { x: 1171, y: 690, width: 152, height: 0 }, // drawLine25
+            { x: 735, y: 552, width: 0, height: 138 }, // drawLine26
+            { x: 730, y: 690, width: 152, height: 0 }, // drawLine27
+            { x: 1029, y: 690, width: 0, height: 138 }, // drawLine28
+            { x: 588, y: 690, width: 0, height: 138 }, // drawLine29 
+        ];
 
+        for (let rect of rectangles) {
+            if (rect.width == 0 && x >= rect.x - 1 && x <= rect.x + 1 && y >= rect.y && y <= rect.y + rect.height) {
+                return true;
+            }
+        }
+        return false;
+    }
 
+    function checkbulletWallCollisiony(x, y, w, h) {
+        let rectangles = [
+            // Maze walls
+            { x: 147, y: 0, width: 0, height: 138 }, // drawLine1
+            { x: 0, y: 276, width: 147, height: 0 }, // drawLine2
+            { x: 294, y: 138, width: 441, height: 0 }, // drawLine3
+            { x: 294, y: 276, width: 147, height: 0 }, // drawLine4
+            { x: 0, y: 552, width: 147, height: 0 }, // drawLine5
+            { x: 294, y: 414, width: 0, height: 294 }, // drawLine6
+            { x: 147, y: 414, width: 0, height: 138 }, // drawLine7
+            { x: 147, y: 690, width: 294, height: 0 }, // drawLine8
+            { x: 436, y: 276, width: 0, height: 138 }, // drawLine9
+            { x: 294, y: 552, width: 294, height: 0 }, // drawLine11           
+            { x: 588, y: 272, width: 0, height: 285 }, // drawLine12
+            { x: 735, y: 133, width: 0, height: 138 }, // drawLine13
+            { x: 730, y: 276, width: 152, height: 0 }, // drawLine14
+            { x: 882, y: 0, width: 0, height: 138 }, // drawLine15
+            { x: 1029, y: 138, width: 443, height: 0 }, // drawLine16
+            { x: 1176, y: 138, width: 0, height: 138 }, // drawLine17 
+            { x: 1029, y: 276, width: 0, height: 138 }, // drawLine18 
+            { x: 1024, y: 414, width: 299, height: 0 }, // drawLine19 
+            { x: 1323, y: 276, width: 0, height: 143 }, // drawLine20
+            { x: 735, y: 414, width: 147, height: 0 }, // drawLine21
+            { x: 882, y: 409, width: 0, height: 143 }, // drawLine22
+            { x: 877, y: 552, width: 436, height: 0}, // drawLine23
+            { x: 1176, y: 690, width: 0, height: 138}, // drawLine24
+            { x: 1171, y: 690, width: 152, height: 0 }, // drawLine25
+            { x: 735, y: 552, width: 0, height: 138 }, // drawLine26
+            { x: 730, y: 690, width: 152, height: 0 }, // drawLine27
+            { x: 1029, y: 690, width: 0, height: 138 }, // drawLine28
+            { x: 588, y: 690, width: 0, height: 138 }, // drawLine29 
+        ];
+
+        for (let rect of rectangles) {
+            if (rect.height == 0 && y >= rect.y - 1 && y <= rect.y + 1 && x >= rect.x && x <= rect.x + rect.width) {
+                return true;
+            }
+        }
+        return false;
+    }
 
 
     function Player(x, y, rotation, w, h)
@@ -365,9 +444,15 @@ courses: { compsci: {week: 6} }
                     return;
                 }
 
-                if (checkMazeCollision(posx - rad, posy - rad, 2 * rad, 2 * rad)) {
-                    // Reverse bullet direction upon collision
+                if (checkbulletWallCollisionx(posx, posy, rad, rad)) {
+                    console.log("momo");
+                    console.log(posx);
                     velx = -velx;
+                }
+
+                if (checkbulletWallCollisiony(posx, posy, rad,rad)){
+                    console.log("mama");
+                    console.log(posy)
                     vely = -vely;
                 }
 
@@ -441,11 +526,18 @@ courses: { compsci: {week: 6} }
                     return;
                 }
 
-                if (checkMazeCollision(posx - rad, posy - rad, 2 * rad, 2 * rad)) {
-                    // Reverse bullet direction upon collision
+                if (checkbulletWallCollisionx(posx, posy, rad, rad)) {
+                    console.log("momo");
+                    console.log(posx);
                     velx = -velx;
+                }
+
+                if (checkbulletWallCollisiony(posx, posy, rad,rad)){
+                    console.log("mama");
+                    console.log(posy)
                     vely = -vely;
                 }
+
 
                 if (Date.now() - lastFireTime1 >= 2000) {
                     if (
