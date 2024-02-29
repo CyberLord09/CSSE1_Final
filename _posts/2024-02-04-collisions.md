@@ -365,30 +365,6 @@ courses: { compsci: {week: 6} }
                     return;
                 }
 
-                if (posy-23 > player2.y){
-                    if (posx-23 < player2.x){
-                        console.log('bullet coming from bottom left')
-                    }
-                    if (posx-23 > player2.x){
-                        console.log('bullet coming from bottom right')
-                    }
-                    if (posx-23 == player2.x){
-                        console.log('bullet coming from center bottom')
-                    }
-                }
-
-                if (posy-23 < player2.y){
-                    if (posx-23 < player2.x){
-                        console.log('bullet coming from top left')
-                    }
-                    if (posx-23 > player2.x){
-                        console.log('bullet coming from top right')
-                    }
-                    if (posx-23 == player2.x){
-                        console.log('bullet coming from center top')
-                    }
-                }
-
                 if (checkMazeCollision(posx - rad, posy - rad, 2 * rad, 2 * rad)) {
                     // Reverse bullet direction upon collision
                     velx = -velx;
@@ -406,6 +382,15 @@ courses: { compsci: {week: 6} }
                         endGame();
                     }
                 }
+                if (
+                        posx >= player1.x &&
+                        posx <= player1.x + player1.w &&
+                        posy >= player1.y &&
+                        posy <= player1.y + player1.h
+                    ) {
+                        console.log('player 1 has been hit by player 2 bullet');
+                        endGame();
+                    }
                 
                 requestAnimationFrame(draw_and_update);
             }
@@ -456,35 +441,26 @@ courses: { compsci: {week: 6} }
                     return;
                 }
 
-                if (posy-23 > player1.y){
-                    if (posx-23 < player1.x){
-                        console.log('bullet coming from bottom left')
-                    }
-                    if (posx-23 > player1.x){
-                        console.log('bullet coming from bottom right')
-                    }
-                    if (posx-23 == player1.x){
-                        console.log('bullet coming from center bottom')
-                    }
-                }
-
-                if (posy-23 < player1.y){
-                    if (posx-23 < player1.x){
-                        console.log('bullet coming from top left')
-                    }
-                    if (posx-23 > player1.x){
-                        console.log('bullet coming from top right')
-                    }
-                    if (posx-23 == player1.x){
-                        console.log('bullet coming from center top')
+                if (Date.now() - lastFireTime1 >= 2000) {
+                    if (
+                        posx >= player1.x &&
+                        posx <= player1.x + player1.w &&
+                        posy >= player1.y &&
+                        posy <= player1.y + player1.h
+                    ) {
+                        console.log('player 1 has been hit');
+                        endGame();
                     }
                 }
-                if (posx-23 == player1.x) {
-                    if (posy-23 == player1.y) {
-                        console.log('player 1 has been hit')
-                        endGame(); 
+                if (
+                        posx >= player2.x &&
+                        posx <= player2.x + player2.w &&
+                        posy >= player2.y &&
+                        posy <= player2.y + player2.h
+                    ) {
+                        console.log('player 2 has been hit by player 1 bullet');
+                        endGame();
                     }
-                }
                 requestAnimationFrame(draw_and_update);
             }
             requestAnimationFrame(draw_and_update);
