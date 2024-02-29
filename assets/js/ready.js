@@ -41,14 +41,11 @@ slider.addEventListener('input', function() {
   var value = slider.value;
   if (value == 1) {
     console.log("1")
+    location.replace("/student//2024/02/04/tanktestdrawing.html")
   }
 
   else if (value == 2) {
     console.log("2")
-  }
-
-  else if (value == 3) {
-    console.log("3")
   }
 })
 
@@ -77,6 +74,8 @@ let spacePressed = false;
 let slasPressed = false;
 let qPressed = false;
 let started = false;
+
+let gameEnded = false;
 
 //controls for player one and two
 function keyDownHandler(e)
@@ -216,80 +215,208 @@ function drawimgrotation(img, x, y, width, height, deg)
     canvas.translate( (x + width / 2) * -1, (y + height / 2) * -1 );
 }
 
-function controls()
-{
-
-    //p1
-    if(leftPressed)
-    {
+function controls() {
+    // Player 1 movement
+    if (leftPressed) {
         player1.rotation -= 1;
     }
 
-    if(rightPressed)
-    {
+    if (rightPressed) {
         player1.rotation += 1;
     }
 
-    //diag path
+    let player1NewX = player1.x;
+    let player1NewY = player1.y;
+
     if (upPressed) {
-        let upx = player1.x + Math.cos(player1.rotation * Math.PI / 180);
-        let upy = player1.y + Math.sin(player1.rotation * Math.PI / 180);
-        
-        if (upx + player1.w / 1 <= 1472 && upx - player1.w / 10000 >= 0 && 
-            upy + player1.h / 1 <= 828 && upy - player1.h / 10000 >= 0) {
-            player1.x = upx;
-            player1.y = upy;
+        let newX = player1.x + Math.cos(player1.rotation * Math.PI / 180);
+        let newY = player1.y + Math.sin(player1.rotation * Math.PI / 180);
+        if (!checkMazeCollision(newX, newY, player1.w, player1.h)) {
+            player1NewX = newX;
+            player1NewY = newY;
         }
     }
 
-    if(downPressed)
-    {
-        let downx = player1.x - Math.cos(player1.rotation * Math.PI/180);
-        let downy = player1.y - Math.sin(player1.rotation * Math.PI/180);
-
-        if (downx + player1.w / 1 <= 1472 && downx - player1.w / 10000 >= 0 && 
-            downy + player1.h / 1 <= 828 && downy - player1.h / 10000 >= 0) {
-            player1.x = downx;
-            player1.y = downy;
+    if (downPressed) {
+        let newX = player1.x - Math.cos(player1.rotation * Math.PI / 180);
+        let newY = player1.y - Math.sin(player1.rotation * Math.PI / 180);
+        if (!checkMazeCollision(newX, newY, player1.w, player1.h)) {
+            player1NewX = newX;
+            player1NewY = newY;
         }
     }
 
-    //p2
-    if(aPressed)
-    {
+    // Player 2 movement
+    if (aPressed) {
         player2.rotation -= 1;
     }
 
-    if(dPressed)
-    {
+    if (dPressed) {
         player2.rotation += 1;
     }
 
-    //diag path
-    if(wPressed)
-    {
-        let wx = player2.x + Math.cos(player2.rotation * Math.PI/180);
-        let wy = player2.y + Math.sin(player2.rotation * Math.PI/180);
+    let player2NewX = player2.x;
+    let player2NewY = player2.y;
 
-        if (wx + player2.w / 1 <= 1472 && wx - player2.w / 10000 >= 0 && 
-            wy + player2.h / 1 <= 828 && wy - player2.h / 10000 >= 0) {
-            player2.x = wx;
-            player2.y = wy;
+    if (wPressed) {
+        let newX = player2.x + Math.cos(player2.rotation * Math.PI / 180);
+        let newY = player2.y + Math.sin(player2.rotation * Math.PI / 180);
+        if (!checkMazeCollision(newX, newY, player2.w, player2.h)) {
+            player2NewX = newX;
+            player2NewY = newY;
         }
     }
 
-    if(sPressed)
-    {
-        let sx = player2.x - Math.cos(player2.rotation * Math.PI/180);
-        let sy = player2.y - Math.sin(player2.rotation * Math.PI/180);
-
-        if (sx + player2.w / 1 <= 1472 && sx - player2.w / 10000 >= 0 && 
-            sy + player2.h / 1 <= 828 && sy - player2.h / 10000 >= 0) {
-            player2.x = sx;
-            player2.y = sy;
+    if (sPressed) {
+        let newX = player2.x - Math.cos(player2.rotation * Math.PI / 180);
+        let newY = player2.y - Math.sin(player2.rotation * Math.PI / 180);
+        if (!checkMazeCollision(newX, newY, player2.w, player2.h)) {
+            player2NewX = newX;
+            player2NewY = newY;
         }
     }
+
+    player1.x = player1NewX;
+    player1.y = player1NewY;
+
+    player2.x = player2NewX;
+    player2.y = player2NewY;
 }
+
+function checkMazeCollision(x, y, w, h) {
+    // Check border collision
+    if (x < 0 || x + w > 1472 || y < 0 || y + h > 828) {
+        return true; // Colliding with border
+    }
+
+    // Define maze rectangles (adjust dimensions as needed)
+    let rectangles = [
+        // Maze walls
+        { x: 147, y: 0, width: 0, height: 138 }, // drawLine1
+        { x: 0, y: 276, width: 147, height: 0 }, // drawLine2
+        { x: 294, y: 138, width: 441, height: 0 }, // drawLine3
+        { x: 294, y: 276, width: 147, height: 0 }, // drawLine4
+        { x: 0, y: 552, width: 147, height: 0 }, // drawLine5
+        { x: 294, y: 414, width: 0, height: 294 }, // drawLine6
+        { x: 147, y: 414, width: 0, height: 138 }, // drawLine7
+        { x: 147, y: 690, width: 294, height: 0 }, // drawLine8
+        { x: 436, y: 276, width: 0, height: 138 }, // drawLine9
+        { x: 294, y: 552, width: 294, height: 0 }, // drawLine11           
+        { x: 588, y: 272, width: 0, height: 285 }, // drawLine12
+        { x: 735, y: 133, width: 0, height: 138 }, // drawLine13
+        { x: 730, y: 276, width: 152, height: 0 }, // drawLine14
+        { x: 882, y: 0, width: 0, height: 138 }, // drawLine15
+        { x: 1029, y: 138, width: 443, height: 0 }, // drawLine16
+        { x: 1176, y: 138, width: 0, height: 138 }, // drawLine17 
+        { x: 1029, y: 276, width: 0, height: 138 }, // drawLine18 
+        { x: 1024, y: 414, width: 299, height: 0 }, // drawLine19 
+        { x: 1323, y: 276, width: 0, height: 143 }, // drawLine20
+        { x: 735, y: 414, width: 147, height: 0 }, // drawLine21
+        { x: 882, y: 409, width: 0, height: 143 }, // drawLine22
+        { x: 877, y: 552, width: 436, height: 0}, // drawLine23
+        { x: 1176, y: 690, width: 0, height: 138}, // drawLine24
+        { x: 1171, y: 690, width: 152, height: 0 }, // drawLine25
+        { x: 735, y: 552, width: 0, height: 138 }, // drawLine26
+        { x: 730, y: 690, width: 152, height: 0 }, // drawLine27
+        { x: 1029, y: 690, width: 0, height: 138 }, // drawLine28
+        { x: 588, y: 690, width: 0, height: 138 }, // drawLine29 
+    ];
+
+    // Check collision with each maze rectangle
+    for (let rect of rectangles) {
+        if (x < rect.x + rect.width &&
+            x + w > rect.x &&
+            y < rect.y + rect.height &&
+            y + h > rect.y) {
+            return true; // Colliding with maze wall
+        }
+    }
+
+    return false; // Not colliding with maze wall
+}
+
+function checkbulletWallCollisionx(x, y, w, h) {
+    let rectangles = [
+        // Maze walls
+        { x: 147, y: 0, width: 0, height: 138 }, // drawLine1
+        { x: 0, y: 276, width: 147, height: 0 }, // drawLine2
+        { x: 294, y: 138, width: 441, height: 0 }, // drawLine3
+        { x: 294, y: 276, width: 147, height: 0 }, // drawLine4
+        { x: 0, y: 552, width: 147, height: 0 }, // drawLine5
+        { x: 294, y: 414, width: 0, height: 294 }, // drawLine6
+        { x: 147, y: 414, width: 0, height: 138 }, // drawLine7
+        { x: 147, y: 690, width: 294, height: 0 }, // drawLine8
+        { x: 436, y: 276, width: 0, height: 138 }, // drawLine9
+        { x: 294, y: 552, width: 294, height: 0 }, // drawLine11           
+        { x: 588, y: 272, width: 0, height: 285 }, // drawLine12
+        { x: 735, y: 133, width: 0, height: 138 }, // drawLine13
+        { x: 730, y: 276, width: 152, height: 0 }, // drawLine14
+        { x: 882, y: 0, width: 0, height: 138 }, // drawLine15
+        { x: 1029, y: 138, width: 443, height: 0 }, // drawLine16
+        { x: 1176, y: 138, width: 0, height: 138 }, // drawLine17 
+        { x: 1029, y: 276, width: 0, height: 138 }, // drawLine18 
+        { x: 1024, y: 414, width: 299, height: 0 }, // drawLine19 
+        { x: 1323, y: 276, width: 0, height: 143 }, // drawLine20
+        { x: 735, y: 414, width: 147, height: 0 }, // drawLine21
+        { x: 882, y: 409, width: 0, height: 143 }, // drawLine22
+        { x: 877, y: 552, width: 436, height: 0}, // drawLine23
+        { x: 1176, y: 690, width: 0, height: 138}, // drawLine24
+        { x: 1171, y: 690, width: 152, height: 0 }, // drawLine25
+        { x: 735, y: 552, width: 0, height: 138 }, // drawLine26
+        { x: 730, y: 690, width: 152, height: 0 }, // drawLine27
+        { x: 1029, y: 690, width: 0, height: 138 }, // drawLine28
+        { x: 588, y: 690, width: 0, height: 138 }, // drawLine29 
+    ];
+
+    for (let rect of rectangles) {
+        if (rect.width == 0 && x >= rect.x - 1 && x <= rect.x + 1 && y >= rect.y && y <= rect.y + rect.height) {
+            return true;
+        }
+    }
+    return false;
+}
+
+function checkbulletWallCollisiony(x, y, w, h) {
+    let rectangles = [
+        // Maze walls
+        { x: 147, y: 0, width: 0, height: 138 }, // drawLine1
+        { x: 0, y: 276, width: 147, height: 0 }, // drawLine2
+        { x: 294, y: 138, width: 441, height: 0 }, // drawLine3
+        { x: 294, y: 276, width: 147, height: 0 }, // drawLine4
+        { x: 0, y: 552, width: 147, height: 0 }, // drawLine5
+        { x: 294, y: 414, width: 0, height: 294 }, // drawLine6
+        { x: 147, y: 414, width: 0, height: 138 }, // drawLine7
+        { x: 147, y: 690, width: 294, height: 0 }, // drawLine8
+        { x: 436, y: 276, width: 0, height: 138 }, // drawLine9
+        { x: 294, y: 552, width: 294, height: 0 }, // drawLine11           
+        { x: 588, y: 272, width: 0, height: 285 }, // drawLine12
+        { x: 735, y: 133, width: 0, height: 138 }, // drawLine13
+        { x: 730, y: 276, width: 152, height: 0 }, // drawLine14
+        { x: 882, y: 0, width: 0, height: 138 }, // drawLine15
+        { x: 1029, y: 138, width: 443, height: 0 }, // drawLine16
+        { x: 1176, y: 138, width: 0, height: 138 }, // drawLine17 
+        { x: 1029, y: 276, width: 0, height: 138 }, // drawLine18 
+        { x: 1024, y: 414, width: 299, height: 0 }, // drawLine19 
+        { x: 1323, y: 276, width: 0, height: 143 }, // drawLine20
+        { x: 735, y: 414, width: 147, height: 0 }, // drawLine21
+        { x: 882, y: 409, width: 0, height: 143 }, // drawLine22
+        { x: 877, y: 552, width: 436, height: 0}, // drawLine23
+        { x: 1176, y: 690, width: 0, height: 138}, // drawLine24
+        { x: 1171, y: 690, width: 152, height: 0 }, // drawLine25
+        { x: 735, y: 552, width: 0, height: 138 }, // drawLine26
+        { x: 730, y: 690, width: 152, height: 0 }, // drawLine27
+        { x: 1029, y: 690, width: 0, height: 138 }, // drawLine28
+        { x: 588, y: 690, width: 0, height: 138 }, // drawLine29 
+    ];
+
+    for (let rect of rectangles) {
+        if (rect.height == 0 && y >= rect.y - 1 && y <= rect.y + 1 && x >= rect.x && x <= rect.x + rect.width) {
+            return true;
+        }
+    }
+    return false;
+}
+
 
 function Player(x, y, rotation, w, h)
 {
@@ -314,9 +441,9 @@ function player2Bullet() {
         lastFireTime2 = Date.now();
 
         let rad = 5;
-        let posx = player2.x+50;
-        let posy = player2.y+48;
-
+        let posx = player2.x+23;
+        let posy = player2.y+23;
+        
         //velocity
         let radang = player2.rotation * Math.PI / 180;
         let speed = 150;
@@ -343,11 +470,48 @@ function player2Bullet() {
             if (Date.now() - lastFireTime2 >= 10000) {
                 return;
             }
+            if (gameEnded) {
+                return;
+            }
 
+            if (checkbulletWallCollisionx(posx, posy, rad, rad)) {
+                console.log("momo");
+                console.log(posx);
+                velx = -velx;
+            }
+
+            if (checkbulletWallCollisiony(posx, posy, rad,rad)){
+                console.log("mama");
+                console.log(posy)
+                vely = -vely;
+            }
+
+            if (Date.now() - lastFireTime2 >= 2000) {
+                if (
+                    posx >= player2.x &&
+                    posx <= player2.x + player2.w &&
+                    posy >= player2.y &&
+                    posy <= player2.y + player2.h
+                ) {
+                    console.log('player 2 has been hit');
+                    endGame();
+                }
+            }
+            if (
+                    posx >= player1.x &&
+                    posx <= player1.x + player1.w &&
+                    posy >= player1.y &&
+                    posy <= player1.y + player1.h
+                ) {
+                    console.log('player 1 has been hit by player 2 bullet');
+                    endGame();
+                }
+            
             requestAnimationFrame(draw_and_update);
         }
         requestAnimationFrame(draw_and_update);
     }
+
 }
 
 let lastFireTime1 = 0;
@@ -359,8 +523,8 @@ function player1Bullet() {
         lastFireTime1 = Date.now();
 
         let rad = 5;
-        let posx = player1.x+50;
-        let posy = player1.y+48;
+        let posx = player1.x+23;
+        let posy = player1.y+23;
 
         //velocity
         let radang = player1.rotation * Math.PI / 180;
@@ -388,15 +552,51 @@ function player1Bullet() {
             if (Date.now() - lastFireTime1 >= 10000) {
                 return;
             }
+            if (gameEnded) {
+                return;
+            }
 
+            if (checkbulletWallCollisionx(posx, posy, rad, rad)) {
+                console.log("momo");
+                console.log(posx);
+                velx = -velx;
+            }
+
+            if (checkbulletWallCollisiony(posx, posy, rad,rad)){
+                console.log("mama");
+                console.log(posy)
+                vely = -vely;
+            }
+
+
+            if (Date.now() - lastFireTime1 >= 2000) {
+                if (
+                    posx >= player1.x &&
+                    posx <= player1.x + player1.w &&
+                    posy >= player1.y &&
+                    posy <= player1.y + player1.h
+                ) {
+                    console.log('player 1 has been hit');
+                    endGame();
+                }
+            }
+            if (
+                    posx >= player2.x &&
+                    posx <= player2.x + player2.w &&
+                    posy >= player2.y &&
+                    posy <= player2.y + player2.h
+                ) {
+                    console.log('player 2 has been hit by player 1 bullet');
+                    endGame();
+                }
             requestAnimationFrame(draw_and_update);
         }
         requestAnimationFrame(draw_and_update);
     }
 }
 
-let player2 = new Player (25, 25, 90, 92, 92);
-let player1 = new Player (1355, 715, 270, 92, 92);
+let player2 = new Player (25, 25, 90, 46, 46);
+let player1 = new Player (1355, 715, 270, 46, 46);
 
 function drawLine1() {
 
@@ -1028,48 +1228,8 @@ function drawLine29() {
     canvas.stroke();
 }
 
-// Check collision with each wall for player 1
-function checkCollisionPlayer1() {
-    // Left wall
-    if (player1.x < 0) {
-        player1.x = 0;
-    }
-    // Top wall
-    if (player1.y < 0) {
-        player1.y = 0;
-    }
-    // Right wall
-    if (player1.x + player1.w > canvas.width) {
-        player1.x = canvas.width - player1.w;
-    }
-    // Bottom wall
-    if (player1.y + player1.h > canvas.height) {
-        player1.y = canvas.height - player1.h;
-    }
-}
-
-// Check collision with each wall for player 2
-function checkCollisionPlayer2() {
-    // Left wall
-    if (player2.x < 0) {
-        player2.x = 0;
-    }
-    // Top wall
-    if (player2.y < 0) {
-        player2.y = 0;
-    }
-    // Right wall
-    if (player2.x + player2.w > canvas.width) {
-        player2.x = canvas.width - player2.w;
-    }
-    // Bottom wall
-    if (player2.y + player2.h > canvas.height) {
-        player2.y = canvas.height - player2.h;
-    }
-}
-
-// Call collision detection functions inside the drawImage function
-function drawImage() {
+function drawImage()
+{
     canvas.clearRect(0, 0, 1472, 828);
 
     controls();
@@ -1077,9 +1237,6 @@ function drawImage() {
     player1Bullet();
 
     player2Bullet();
-
-    checkCollisionPlayer1(); // Check collision for player 1
-    checkCollisionPlayer2(); // Check collision for player 2
 
     drawLine1();
     drawLine2();
@@ -1111,13 +1268,29 @@ function drawImage() {
     drawLine28();
     drawLine29();
 
-    if (!player1.hit) {
+    if(!player1.hit)
+    {
         drawimgrotation(tank1, player1.x, player1.y, player1.w, player1.h, player1.rotation);
     }
 
-    if (!player2.hit) {
+    if(!player2.hit)
+    {
         drawimgrotation(tank2, player2.x, player2.y, player2.w, player2.h, player2.rotation);
     }
 }
-
 setInterval(drawImage, 5);
+
+function endGame() {
+    player2 = new Player (25, 25, 90, 46, 46);
+    player1 = new Player (1355, 715, 270, 46, 46);
+
+    document.getElementById("gameContainer").style.opacity = 0;
+    document.documentElement.style.background = '#97ae89';
+    document.body.style.backgroundImage = 'url("/student/images/sprite/TANKLOADINGBLANK.png")';
+
+    gameEnded = true;
+
+    document.querySelectorAll('.container button').forEach(function(button) {
+        button.style.display = 'block';
+      });
+}

@@ -152,7 +152,7 @@ courses: { compsci: {week: 6} }
           <h2>Drawing Game</h2>
         </div>
         <div class="choice">
-          <input type="range" min="1" max="3" value="2" class="slider" id="myRange">
+          <input type="range" min="1" max="2" value="2" class="slider" id="myRange">
         </div>
         <div class="choice">
           <h2>Actual Game</h2>
