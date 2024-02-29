@@ -17,24 +17,6 @@ courses: { compsci: {week: 6} }
 <canvas width="1472" height="828" style="border: 10px solid black; float:left; margin:5px; background: #6C6C6C;" id="box"></canvas>
 
 <script>
-    function checkBulletTankCollision(tank, bullet) {
-        // Calculate the coordinates of the center of the tank
-        let tankCenterX = tank.x + tank.w / 2;
-        let tankCenterY = tank.y + tank.h / 2;
-
-        // Calculate the distance between the center of the tank and the bullet
-        let distanceX = Math.abs(bullet.posx - tankCenterX);
-        let distanceY = Math.abs(bullet.posy - tankCenterY);
-
-        // Check if the distance is within the tank's radius
-        if (distanceX <= (tank.w / 2) && distanceY <= (tank.h / 2)) {
-            // Collision detected
-            return true;
-        }
-
-        // No collision
-        return false;
-    }
 
     
     window.addEventListener("keydown", function(e) { if(["Space","ArrowUp","ArrowDown","ArrowLeft","ArrowRight"].indexOf(e.code) > -1) { e.preventDefault(); } }, false);
@@ -352,7 +334,7 @@ courses: { compsci: {week: 6} }
             let rad = 5;
             let posx = player2.x+23;
             let posy = player2.y+23;
-
+            
             //velocity
             let radang = player2.rotation * Math.PI / 180;
             let speed = 150;
@@ -413,10 +395,15 @@ courses: { compsci: {week: 6} }
                     vely = -vely;
                 }
 
-                if (posx-23 == player2.x) {
-                    if (posy-23 == player2.y){
-                        console.log('player 2 has been hit')
-                        endGame(); 
+                if (Date.now() - lastFireTime2 >= 2000) {
+                    if (
+                        posx >= player2.x &&
+                        posx <= player2.x + player2.w &&
+                        posy >= player2.y &&
+                        posy <= player2.y + player2.h
+                    ) {
+                        console.log('player 2 has been hit');
+                        endGame();
                     }
                 }
                 
